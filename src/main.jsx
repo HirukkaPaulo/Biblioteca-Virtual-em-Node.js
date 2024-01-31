@@ -10,6 +10,7 @@ import Livros from './views/Livros/Livros';
 import LivrosCadastro from './views/LivrosCadastro/LivrosCadastro';
 import LivrosEdicao from './views/LivrosEdicao/LivrosEdicao';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
     element: <LivrosCadastro />,
   },
   {
-    path: "/livros/edicao/:livroId",
+    path: "/livros/edicao/:id",
     element: <LivrosEdicao />,
   },
 ]);
@@ -34,3 +35,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 )
+

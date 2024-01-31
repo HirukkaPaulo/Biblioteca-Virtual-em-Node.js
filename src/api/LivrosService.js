@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = "https://api-biblioteca-virtual.onrender.com"
 
 export class LivrosService{
     static getLivros(){
@@ -8,15 +8,16 @@ export class LivrosService{
     }
 
     static getLivro(id){
-        return axios.get(`${BASE_URL}/livros/${id}`);
+        return axios.get(`${BASE_URL}/livros/?_id=${id}`);
     }
 
     static createLivro(body){
-        return axios.post(`${BASE_URL}/livros`,body);
+        return axios.post(`${BASE_URL}/livros/cadastro`,body)
     }
 
-    static updateLivro(id,body){
-        return axios.put(`${BASE_URL}/livros/${id}`,body);
+    static async updateLivro(id,body){
+        return axios.put(`${BASE_URL}/livros/edicao/${id}`, body);
+
     }
 
     static deleteLivro(id){
