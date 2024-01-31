@@ -6,25 +6,27 @@ import { LivrosService } from '../../api/LivrosService'
 
 const LivrosCadastro = () => {
   
-  const [livro, setLivro] = useState({})
+  const [livro, setLivro] = useState({
+    title:'',
+    pages:'',
+    isbn: '',
+    pb: ''
+  })
 
-  async function createLivro(){
-    const body = {
-        id:livro.id,
-        title:livro.title,
-        pages:livro.pages,
-        isbn: livro.isbn,
-        pb: livro.pb
-      }
-      if(livro.id != undefined && livro.id != '' && livro.title != undefined && livro.title != '' && livro.pages != undefined && livro.pages !='' && livro.isbn !=undefined && livro.isbn !='' && livro.pb !=undefined && livro.pb !=''){
-      await LivrosService.createLivro(livro)
-      .then(()=>{
-        alert('O livro foi criado com sucesso')
-      })
-    }
+  async function createLivro(e){
+    e.preventDefault();
+    
+    await LivrosService.createLivro(livro)
+    .then(()=>{
+      alert('O livro foi criado com sucesso.')
+    })
+    .catch(error => {
+      console.error('Erro na requisição:', error.response.status, error.response.data);    
+    });
+    console.log(livro)
+  } 
 
-  }
-  console.log(livro)
+
   return (
   <>
     <Header/>    
@@ -32,14 +34,10 @@ const LivrosCadastro = () => {
     <div className='livrosCadastro'>
         <h1>Cadastro de Livros</h1>
         <div>          
-          <form id="formulario">
-          <div className='form-group'>
-            <label>Id</label>
-            <input type="text" id='id' required onChange={(event)=>{ setLivro({...livro, id: event.target.value})}} ></input>
-          </div>
+          <form onSubmit={(e) => createLivro(e)} id="formulario">
           <div className='form-group'>
             <label>Titulo</label>
-            <input type="text" id='titulo' required onChange={(event)=>{ setLivro({...livro, title: event.target.value })}}></input>
+            <input type="text" id='titulo' required onChange={(event)=>{ setLivro({...livro, title: event.target.value})}}></input>
           </div>
           <div className='form-group'>
             <label>Número de Páginas</label>
@@ -54,9 +52,7 @@ const LivrosCadastro = () => {
             <input type="text" id='editora' required onChange={(event)=>{ setLivro({...livro, pb: event.target.value})}}></input>
           </div> 
           <div className='form-group'>
-            <button onClick={()=>{
-              createLivro()
-            }}>Cadastrar Livro</button>  
+            <button type='submit'>Cadastrar Livro</button>  
           </div>         
           </form>
         </div>

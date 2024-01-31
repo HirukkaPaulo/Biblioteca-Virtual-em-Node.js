@@ -38,19 +38,19 @@ const LivrosEdicao = () => {
           <form onSubmit={(e) => editLivro(e)} id="formulario">
             <div className='form-group'>
               <label>Id</label>
-              <input type="text" disabled required onChange={(event)=>{event.persist(); setLivro({...livro, id: event.target.value})}} value={livro.id }></input>
+              <input type="text" disabled required onChange={(event)=>{event.persist(); setLivro({...livro, id: event.target.value})}} value={livro.id}></input>
             </div>
             <div className='form-group'>
               <label>Titulo</label>
-              <input type="text" required onChange={(event)=>{event.persist(); setLivro({...livro, title: event.target.value})}} value={livro.title } ></input>
+              <input type="text" required onChange={(event)=>{event.persist(); setLivro({...livro, title: event.target.value})}} value={livro.title} ></input>
             </div>
             <div className='form-group'>
               <label>Número de Páginas</label>
-              <input type="text"  required onChange={(event)=>{event.persist(); setLivro({...livro, pages: event.target.value})}} value={livro.pages }></input>
+              <input type="text"  required onChange={(event)=>{event.persist(); setLivro({...livro, pages: event.target.value})}} value={livro.pages}></input>
             </div>
             <div className='form-group'>
               <label>Editora</label>
-              <input type="text"  required onChange={(event)=>{event.persist(); setLivro({...livro, pb: event.target.value})}} value={livro.pb }></input>
+              <input type="text"  required onChange={(event)=>{event.persist(); setLivro({...livro, pb: event.target.value})}} value={livro.pb}></input>
             </div> 
             <div className='form-group'>
               <label>ISBN</label>
